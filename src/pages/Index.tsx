@@ -5,18 +5,16 @@ import DoctorLoginModal from '@/components/DoctorLoginModal';
 import PatientLoginModal from '@/components/PatientLoginModal';
 import heroBg from '@/assets/hero-bg.jpg';
 import { Leaf, Stethoscope, Heart, Sparkles, ChevronRight } from 'lucide-react';
-
 const Index: React.FC = () => {
-  const { t } = useLanguage();
+  const {
+    t
+  } = useLanguage();
   const [showDoctorModal, setShowDoctorModal] = useState(false);
   const [showPatientModal, setShowPatientModal] = useState(false);
-
-  return (
-    <div className="min-h-screen relative overflow-hidden">
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBg})` }}
-      >
+  return <div className="min-h-screen relative overflow-hidden">
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
+      backgroundImage: `url(${heroBg})`
+    }}>
         <div className="absolute inset-0 ayur-hero-overlay" />
       </div>
 
@@ -31,7 +29,7 @@ const Index: React.FC = () => {
           <LanguageSelector />
         </header>
 
-        <main className="flex-1 flex flex-col items-center justify-center px-6 py-12">
+        <main className="flex-1 flex flex-col items-center justify-center px-6 py-12 bg-primary">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-foreground/10 backdrop-blur-sm text-primary-foreground text-sm mb-6">
               <Sparkles className="w-4 h-4" />
@@ -79,8 +77,6 @@ const Index: React.FC = () => {
 
       <DoctorLoginModal isOpen={showDoctorModal} onClose={() => setShowDoctorModal(false)} />
       <PatientLoginModal isOpen={showPatientModal} onClose={() => setShowPatientModal(false)} />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
