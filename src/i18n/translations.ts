@@ -1,0 +1,390 @@
+export type Language = 'en' | 'te' | 'hi';
+
+export const translations: Record<Language, Record<string, string>> = {
+  en: {
+    // Common
+    appName: "Ayurveda Healthcare",
+    welcome: "Welcome",
+    login: "Login",
+    logout: "Logout",
+    save: "Save",
+    cancel: "Cancel",
+    edit: "Edit",
+    delete: "Delete",
+    add: "Add",
+    search: "Search",
+    filter: "Filter",
+    download: "Download",
+    view: "View",
+    submit: "Submit",
+    back: "Back",
+    next: "Next",
+    loading: "Loading...",
+    success: "Success",
+    error: "Error",
+    required: "Required",
+    optional: "Optional",
+    
+    // Home
+    homeTitle: "Ancient Wisdom, Modern Care",
+    homeSubtitle: "Experience holistic healing through authentic Ayurvedic treatments",
+    doctorCard: "Doctor Portal",
+    doctorCardDesc: "Access your dashboard, manage patients, and create treatment plans",
+    patientCard: "Patient Portal",
+    patientCardDesc: "View your health records, diet plans, and appointments",
+    selectHospital: "Select Hospital",
+    
+    // Doctor Login
+    doctorLogin: "Doctor Login",
+    doctorName: "Doctor Name",
+    phoneNumber: "Phone Number",
+    email: "Email Address",
+    loginFailed: "Login failed. Please check your credentials.",
+    loginSuccess: "Login successful!",
+    
+    // Patient Login
+    patientLogin: "Patient Registration",
+    patientName: "Full Name",
+    registerNow: "Register Now",
+    alreadyRegistered: "Already registered? Login",
+    
+    // Dashboard
+    dashboard: "Dashboard",
+    totalPatients: "Total Patients",
+    totalDietPlans: "Total Diet Plans",
+    todayAppointments: "Today's Appointments",
+    pendingReports: "Pending Reports",
+    
+    // Doctor Menu
+    myPatients: "My Patients",
+    dietPlans: "Diet Plans",
+    appointments: "Appointments",
+    reports: "Reports",
+    settings: "Settings",
+    
+    // Patient Menu
+    myProfile: "My Profile",
+    myDietPlan: "My Diet Plan",
+    myAppointments: "My Appointments",
+    myReports: "My Reports",
+    healthDetails: "Health Details",
+    
+    // Patient Form
+    addPatient: "Add Patient",
+    patientDetails: "Patient Details",
+    age: "Age",
+    gender: "Gender",
+    male: "Male",
+    female: "Female",
+    other: "Other",
+    bloodGroup: "Blood Group",
+    address: "Address",
+    disease: "Disease/Condition",
+    symptoms: "Symptoms",
+    medicalHistory: "Medical History",
+    
+    // Diet Plan
+    createDietPlan: "Create Diet Plan",
+    editDietPlan: "Edit Diet Plan",
+    recommendedFoods: "Recommended Foods",
+    preparation: "Preparation Method",
+    ayurvedicHerbs: "Ayurvedic Herbs",
+    doshas: "Doshas",
+    lifestyle: "Lifestyle Recommendations",
+    yoga: "Yoga & Physical Therapy",
+    
+    // Appointments
+    scheduleAppointment: "Schedule Appointment",
+    appointmentDate: "Appointment Date",
+    appointmentTime: "Appointment Time",
+    appointmentStatus: "Status",
+    scheduled: "Scheduled",
+    completed: "Completed",
+    cancelled: "Cancelled",
+    joinVideoCall: "Join Video Call",
+    
+    // Reports
+    uploadReport: "Upload Report",
+    downloadReport: "Download Report",
+    reportStatus: "Report Status",
+    pending: "Pending",
+    uploaded: "Uploaded",
+    reviewed: "Reviewed",
+    
+    // Settings
+    personalInfo: "Personal Information",
+    updateProfile: "Update Profile",
+    language: "Language",
+    notifications: "Notifications",
+    
+    // Notifications
+    newPatientRegistered: "New patient registered",
+    dietPlanUpdated: "Diet plan has been updated",
+    appointmentScheduled: "Appointment has been scheduled",
+    reportUploaded: "Report has been uploaded",
+    
+    // Validation
+    invalidCredentials: "Invalid credentials. Please check your details.",
+    fieldRequired: "This field is required",
+    invalidEmail: "Please enter a valid email",
+    invalidPhone: "Please enter a valid phone number",
+  },
+  
+  te: {
+    // Common
+    appName: "ఆయుర్వేద ఆరోగ్య సేవలు",
+    welcome: "స్వాగతం",
+    login: "లాగిన్",
+    logout: "లాగ్ అవుట్",
+    save: "సేవ్ చేయండి",
+    cancel: "రద్దు చేయండి",
+    edit: "సవరించండి",
+    delete: "తొలగించండి",
+    add: "జోడించండి",
+    search: "వెతకండి",
+    filter: "ఫిల్టర్",
+    download: "డౌన్లోడ్",
+    view: "చూడండి",
+    submit: "సమర్పించండి",
+    back: "వెనక్కి",
+    next: "తదుపరి",
+    loading: "లోడ్ అవుతోంది...",
+    success: "విజయం",
+    error: "లోపం",
+    required: "అవసరం",
+    optional: "ఐచ్ఛికం",
+    
+    // Home
+    homeTitle: "ప్రాచీన జ్ఞానం, ఆధునిక సంరక్షణ",
+    homeSubtitle: "ప్రామాణిక ఆయుర్వేద చికిత్సల ద్వారా సమగ్ర వైద్యం అనుభవించండి",
+    doctorCard: "డాక్టర్ పోర్టల్",
+    doctorCardDesc: "మీ డాష్‌బోర్డ్‌ను యాక్సెస్ చేయండి, రోగులను నిర్వహించండి",
+    patientCard: "రోగి పోర్టల్",
+    patientCardDesc: "మీ ఆరోగ్య రికార్డులు, ఆహార ప్రణాళికలు చూడండి",
+    selectHospital: "ఆసుపత్రిని ఎంచుకోండి",
+    
+    // Doctor Login
+    doctorLogin: "డాక్టర్ లాగిన్",
+    doctorName: "డాక్టర్ పేరు",
+    phoneNumber: "ఫోన్ నంబర్",
+    email: "ఇమెయిల్ చిరునామా",
+    loginFailed: "లాగిన్ విఫలమైంది. మీ వివరాలను తనిఖీ చేయండి.",
+    loginSuccess: "లాగిన్ విజయవంతమైంది!",
+    
+    // Patient Login
+    patientLogin: "రోగి నమోదు",
+    patientName: "పూర్తి పేరు",
+    registerNow: "ఇప్పుడే నమోదు చేసుకోండి",
+    alreadyRegistered: "ఇప్పటికే నమోదు చేసుకున్నారా? లాగిన్",
+    
+    // Dashboard
+    dashboard: "డాష్‌బోర్డ్",
+    totalPatients: "మొత్తం రోగులు",
+    totalDietPlans: "మొత్తం ఆహార ప్రణాళికలు",
+    todayAppointments: "నేటి అపాయింట్‌మెంట్లు",
+    pendingReports: "పెండింగ్ నివేదికలు",
+    
+    // Doctor Menu
+    myPatients: "నా రోగులు",
+    dietPlans: "ఆహార ప్రణాళికలు",
+    appointments: "అపాయింట్‌మెంట్లు",
+    reports: "నివేదికలు",
+    settings: "సెట్టింగ్‌లు",
+    
+    // Patient Menu
+    myProfile: "నా ప్రొఫైల్",
+    myDietPlan: "నా ఆహార ప్రణాళిక",
+    myAppointments: "నా అపాయింట్‌మెంట్లు",
+    myReports: "నా నివేదికలు",
+    healthDetails: "ఆరోగ్య వివరాలు",
+    
+    // Patient Form
+    addPatient: "రోగిని జోడించండి",
+    patientDetails: "రోగి వివరాలు",
+    age: "వయస్సు",
+    gender: "లింగం",
+    male: "పురుషుడు",
+    female: "స్త్రీ",
+    other: "ఇతర",
+    bloodGroup: "రక్త గ్రూప్",
+    address: "చిరునామా",
+    disease: "వ్యాధి/పరిస్థితి",
+    symptoms: "లక్షణాలు",
+    medicalHistory: "వైద్య చరిత్ర",
+    
+    // Diet Plan
+    createDietPlan: "ఆహార ప్రణాళిక సృష్టించండి",
+    editDietPlan: "ఆహార ప్రణాళిక సవరించండి",
+    recommendedFoods: "సిఫార్సు చేసిన ఆహారాలు",
+    preparation: "తయారీ పద్ధతి",
+    ayurvedicHerbs: "ఆయుర్వేద మూలికలు",
+    doshas: "దోషాలు",
+    lifestyle: "జీవనశైలి సిఫార్సులు",
+    yoga: "యోగా & భౌతిక చికిత్స",
+    
+    // Appointments
+    scheduleAppointment: "అపాయింట్‌మెంట్ షెడ్యూల్ చేయండి",
+    appointmentDate: "అపాయింట్‌మెంట్ తేదీ",
+    appointmentTime: "అపాయింట్‌మెంట్ సమయం",
+    appointmentStatus: "స్థితి",
+    scheduled: "షెడ్యూల్ చేయబడింది",
+    completed: "పూర్తయింది",
+    cancelled: "రద్దు చేయబడింది",
+    joinVideoCall: "వీడియో కాల్‌లో చేరండి",
+    
+    // Reports
+    uploadReport: "నివేదిక అప్‌లోడ్ చేయండి",
+    downloadReport: "నివేదిక డౌన్లోడ్ చేయండి",
+    reportStatus: "నివేదిక స్థితి",
+    pending: "పెండింగ్",
+    uploaded: "అప్‌లోడ్ చేయబడింది",
+    reviewed: "సమీక్షించబడింది",
+    
+    // Settings
+    personalInfo: "వ్యక్తిగత సమాచారం",
+    updateProfile: "ప్రొఫైల్ నవీకరించండి",
+    language: "భాష",
+    notifications: "నోటిఫికేషన్లు",
+    
+    // Notifications
+    newPatientRegistered: "కొత్త రోగి నమోదు చేసుకున్నారు",
+    dietPlanUpdated: "ఆహార ప్రణాళిక నవీకరించబడింది",
+    appointmentScheduled: "అపాయింట్‌మెంట్ షెడ్యూల్ చేయబడింది",
+    reportUploaded: "నివేదిక అప్‌లోడ్ చేయబడింది",
+    
+    // Validation
+    invalidCredentials: "చెల్లని ఆధారాలు. మీ వివరాలను తనిఖీ చేయండి.",
+    fieldRequired: "ఈ ఫీల్డ్ అవసరం",
+    invalidEmail: "దయచేసి చెల్లుబాటు అయ్యే ఇమెయిల్ నమోదు చేయండి",
+    invalidPhone: "దయచేసి చెల్లుబాటు అయ్యే ఫోన్ నంబర్ నమోదు చేయండి",
+  },
+  
+  hi: {
+    // Common
+    appName: "आयुर्वेद स्वास्थ्य सेवा",
+    welcome: "स्वागत है",
+    login: "लॉगिन",
+    logout: "लॉग आउट",
+    save: "सेव करें",
+    cancel: "रद्द करें",
+    edit: "संपादित करें",
+    delete: "हटाएं",
+    add: "जोड़ें",
+    search: "खोजें",
+    filter: "फ़िल्टर",
+    download: "डाउनलोड",
+    view: "देखें",
+    submit: "जमा करें",
+    back: "वापस",
+    next: "अगला",
+    loading: "लोड हो रहा है...",
+    success: "सफलता",
+    error: "त्रुटि",
+    required: "आवश्यक",
+    optional: "वैकल्पिक",
+    
+    // Home
+    homeTitle: "प्राचीन ज्ञान, आधुनिक देखभाल",
+    homeSubtitle: "प्रामाणिक आयुर्वेदिक उपचारों के माध्यम से समग्र उपचार का अनुभव करें",
+    doctorCard: "डॉक्टर पोर्टल",
+    doctorCardDesc: "अपना डैशबोर्ड एक्सेस करें, मरीजों का प्रबंधन करें",
+    patientCard: "मरीज पोर्टल",
+    patientCardDesc: "अपने स्वास्थ्य रिकॉर्ड, आहार योजनाएं देखें",
+    selectHospital: "अस्पताल चुनें",
+    
+    // Doctor Login
+    doctorLogin: "डॉक्टर लॉगिन",
+    doctorName: "डॉक्टर का नाम",
+    phoneNumber: "फोन नंबर",
+    email: "ईमेल पता",
+    loginFailed: "लॉगिन विफल। कृपया अपनी जानकारी जांचें।",
+    loginSuccess: "लॉगिन सफल!",
+    
+    // Patient Login
+    patientLogin: "मरीज पंजीकरण",
+    patientName: "पूरा नाम",
+    registerNow: "अभी पंजीकरण करें",
+    alreadyRegistered: "पहले से पंजीकृत हैं? लॉगिन करें",
+    
+    // Dashboard
+    dashboard: "डैशबोर्ड",
+    totalPatients: "कुल मरीज",
+    totalDietPlans: "कुल आहार योजनाएं",
+    todayAppointments: "आज की अपॉइंटमेंट",
+    pendingReports: "लंबित रिपोर्ट",
+    
+    // Doctor Menu
+    myPatients: "मेरे मरीज",
+    dietPlans: "आहार योजनाएं",
+    appointments: "अपॉइंटमेंट",
+    reports: "रिपोर्ट",
+    settings: "सेटिंग्स",
+    
+    // Patient Menu
+    myProfile: "मेरी प्रोफ़ाइल",
+    myDietPlan: "मेरी आहार योजना",
+    myAppointments: "मेरी अपॉइंटमेंट",
+    myReports: "मेरी रिपोर्ट",
+    healthDetails: "स्वास्थ्य विवरण",
+    
+    // Patient Form
+    addPatient: "मरीज जोड़ें",
+    patientDetails: "मरीज का विवरण",
+    age: "आयु",
+    gender: "लिंग",
+    male: "पुरुष",
+    female: "महिला",
+    other: "अन्य",
+    bloodGroup: "रक्त समूह",
+    address: "पता",
+    disease: "रोग/स्थिति",
+    symptoms: "लक्षण",
+    medicalHistory: "चिकित्सा इतिहास",
+    
+    // Diet Plan
+    createDietPlan: "आहार योजना बनाएं",
+    editDietPlan: "आहार योजना संपादित करें",
+    recommendedFoods: "अनुशंसित खाद्य पदार्थ",
+    preparation: "तैयारी की विधि",
+    ayurvedicHerbs: "आयुर्वेदिक जड़ी-बूटियां",
+    doshas: "दोष",
+    lifestyle: "जीवनशैली सिफारिशें",
+    yoga: "योग और भौतिक चिकित्सा",
+    
+    // Appointments
+    scheduleAppointment: "अपॉइंटमेंट शेड्यूल करें",
+    appointmentDate: "अपॉइंटमेंट की तारीख",
+    appointmentTime: "अपॉइंटमेंट का समय",
+    appointmentStatus: "स्थिति",
+    scheduled: "शेड्यूल किया गया",
+    completed: "पूर्ण",
+    cancelled: "रद्द",
+    joinVideoCall: "वीडियो कॉल में शामिल हों",
+    
+    // Reports
+    uploadReport: "रिपोर्ट अपलोड करें",
+    downloadReport: "रिपोर्ट डाउनलोड करें",
+    reportStatus: "रिपोर्ट की स्थिति",
+    pending: "लंबित",
+    uploaded: "अपलोड किया गया",
+    reviewed: "समीक्षित",
+    
+    // Settings
+    personalInfo: "व्यक्तिगत जानकारी",
+    updateProfile: "प्रोफ़ाइल अपडेट करें",
+    language: "भाषा",
+    notifications: "सूचनाएं",
+    
+    // Notifications
+    newPatientRegistered: "नया मरीज पंजीकृत हुआ",
+    dietPlanUpdated: "आहार योजना अपडेट की गई",
+    appointmentScheduled: "अपॉइंटमेंट शेड्यूल की गई",
+    reportUploaded: "रिपोर्ट अपलोड की गई",
+    
+    // Validation
+    invalidCredentials: "अमान्य क्रेडेंशियल। कृपया अपनी जानकारी जांचें।",
+    fieldRequired: "यह फ़ील्ड आवश्यक है",
+    invalidEmail: "कृपया एक वैध ईमेल दर्ज करें",
+    invalidPhone: "कृपया एक वैध फोन नंबर दर्ज करें",
+  },
+};
