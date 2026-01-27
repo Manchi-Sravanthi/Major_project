@@ -37,6 +37,9 @@ export interface Report {
   title: string;
   description: string;
   fileUrl: string;
+  fileName?: string;
+  fileData?: string;
+  fileType?: string;
   status: 'pending' | 'uploaded' | 'reviewed';
   createdAt: string;
 }
