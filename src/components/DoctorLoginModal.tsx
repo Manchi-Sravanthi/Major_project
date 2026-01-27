@@ -34,8 +34,9 @@ const DoctorLoginModal: React.FC<DoctorLoginModalProps> = ({ isOpen, onClose }) 
     const hospital = validateDoctor(formData.hospitalName, formData.phone, formData.email);
     
     if (hospital) {
+      // Use hospital phone as consistent doctor ID for patient-doctor linkage
       const doctorData = {
-        id: `doc_${Date.now()}`,
+        id: `doc_${hospital.phone}`,
         name: formData.doctorName,
         email: hospital.email,
         phone: hospital.phone,

@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import LanguageSelector from '@/components/LanguageSelector';
 import DoctorLoginModal from '@/components/DoctorLoginModal';
 import PatientLoginModal from '@/components/PatientLoginModal';
 import heroBg from '@/assets/hero-bg.jpg';
-import { Leaf, Stethoscope, Heart, Sparkles, ChevronRight } from 'lucide-react';
+import { Leaf, Stethoscope, Heart, Sparkles, ChevronRight, Building2 } from 'lucide-react';
 
 const Index: React.FC = () => {
   const { t } = useLanguage();
+  const navigate = useNavigate();
   const [showDoctorModal, setShowDoctorModal] = useState(false);
   const [showPatientModal, setShowPatientModal] = useState(false);
 
@@ -41,7 +43,7 @@ const Index: React.FC = () => {
             <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto">{t('homeSubtitle')}</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl w-full">
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl w-full">
             <button onClick={() => setShowDoctorModal(true)} className="group relative bg-card/95 backdrop-blur-md rounded-2xl p-8 text-left transition-all duration-500 hover:scale-105 hover:shadow-2xl border border-border overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/20 to-transparent rounded-bl-full" />
               <div className="relative z-10">
@@ -67,6 +69,21 @@ const Index: React.FC = () => {
                 <p className="text-muted-foreground mb-6">{t('patientCardDesc')}</p>
                 <div className="flex items-center gap-2 text-herb font-medium group-hover:gap-4 transition-all duration-300">
                   <span>{t('registerNow')}</span>
+                  <ChevronRight className="w-5 h-5" />
+                </div>
+              </div>
+            </button>
+
+            <button onClick={() => navigate('/hospitals')} className="group relative bg-card/95 backdrop-blur-md rounded-2xl p-8 text-left transition-all duration-500 hover:scale-105 hover:shadow-2xl border border-border overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent/20 to-transparent rounded-bl-full" />
+              <div className="relative z-10">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-earth flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Building2 className="w-8 h-8 text-accent-foreground" />
+                </div>
+                <h3 className="font-display text-2xl font-semibold text-foreground mb-3">{t('hospitalsCard')}</h3>
+                <p className="text-muted-foreground mb-6">{t('hospitalsCardDesc')}</p>
+                <div className="flex items-center gap-2 text-accent font-medium group-hover:gap-4 transition-all duration-300">
+                  <span>{t('viewHospitals')}</span>
                   <ChevronRight className="w-5 h-5" />
                 </div>
               </div>

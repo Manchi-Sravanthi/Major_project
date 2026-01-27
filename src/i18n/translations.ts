@@ -24,6 +24,8 @@ export const translations: Record<Language, Record<string, string>> = {
     error: "Error",
     required: "Required",
     optional: "Optional",
+    patient: "Patient",
+    condition: "Condition",
     
     // Home
     homeTitle: "Ancient Wisdom, Modern Care",
@@ -32,7 +34,22 @@ export const translations: Record<Language, Record<string, string>> = {
     doctorCardDesc: "Access your dashboard, manage patients, and create treatment plans",
     patientCard: "Patient Portal",
     patientCardDesc: "View your health records, diet plans, and appointments",
+    hospitalsCard: "Hospitals",
+    hospitalsCardDesc: "Find Ayurvedic hospitals and specialists near you",
+    viewHospitals: "View Hospitals",
     selectHospital: "Select Hospital",
+    traditionalAyurvedicHealthcare: "Traditional Ayurvedic Healthcare",
+    
+    // Hospitals
+    hospitals: "Hospitals",
+    filterByDistrict: "Filter by District",
+    allDistricts: "All Districts",
+    showingHospitals: "Showing",
+    specialties: "Specialties",
+    doctors: "Doctors",
+    beds: "Beds",
+    noHospitalsFound: "No hospitals found",
+    tryDifferentDistrict: "Try selecting a different district",
     
     // Doctor Login
     doctorLogin: "Doctor Login",
@@ -54,6 +71,12 @@ export const translations: Record<Language, Record<string, string>> = {
     totalDietPlans: "Total Diet Plans",
     todayAppointments: "Today's Appointments",
     pendingReports: "Pending Reports",
+    noConditionSpecified: "No condition specified",
+    noPatientsYet: "No patients yet",
+    noAppointmentsToday: "No appointments today",
+    noUpcomingAppointments: "No upcoming appointments",
+    noDietPlansYet: "No diet plans yet",
+    noReportsYet: "No reports yet",
     
     // Doctor Menu
     myPatients: "My Patients",
@@ -110,6 +133,21 @@ export const translations: Record<Language, Record<string, string>> = {
     pending: "Pending",
     uploaded: "Uploaded",
     reviewed: "Reviewed",
+    viewUploadReports: "View and upload your medical reports",
+    viewManageReports: "View and manage patient reports",
+    patientReportsAppear: "Patient reports will appear here",
+    uploadFirstReport: "Upload your first medical report",
+    reportTitle: "Report Title",
+    reportDescription: "Description",
+    reportTitlePlaceholder: "e.g., Blood Test Report",
+    reportDescPlaceholder: "Brief description of the report",
+    selectFile: "Select File",
+    clickToSelectFile: "Click to select a file",
+    fileTooLarge: "File too large. Maximum size is 5MB",
+    reportUploadedSuccess: "Report uploaded successfully",
+    uploadFailed: "Upload failed. Please try again.",
+    uploading: "Uploading...",
+    markReviewed: "Mark Reviewed",
     
     // Settings
     personalInfo: "Personal Information",
@@ -153,6 +191,8 @@ export const translations: Record<Language, Record<string, string>> = {
     error: "లోపం",
     required: "అవసరం",
     optional: "ఐచ్ఛికం",
+    patient: "రోగి",
+    condition: "పరిస్థితి",
     
     // Home
     homeTitle: "ప్రాచీన జ్ఞానం, ఆధునిక సంరక్షణ",
@@ -161,7 +201,22 @@ export const translations: Record<Language, Record<string, string>> = {
     doctorCardDesc: "మీ డాష్‌బోర్డ్‌ను యాక్సెస్ చేయండి, రోగులను నిర్వహించండి",
     patientCard: "రోగి పోర్టల్",
     patientCardDesc: "మీ ఆరోగ్య రికార్డులు, ఆహార ప్రణాళికలు చూడండి",
+    hospitalsCard: "ఆసుపత్రులు",
+    hospitalsCardDesc: "మీ సమీపంలోని ఆయుర్వేద ఆసుపత్రులు మరియు నిపుణులను కనుగొనండి",
+    viewHospitals: "ఆసుపత్రులు చూడండి",
     selectHospital: "ఆసుపత్రిని ఎంచుకోండి",
+    traditionalAyurvedicHealthcare: "సాంప్రదాయ ఆయుర్వేద వైద్యం",
+    
+    // Hospitals
+    hospitals: "ఆసుపత్రులు",
+    filterByDistrict: "జిల్లా ద్వారా ఫిల్టర్ చేయండి",
+    allDistricts: "అన్ని జిల్లాలు",
+    showingHospitals: "చూపిస్తోంది",
+    specialties: "ప్రత్యేకతలు",
+    doctors: "డాక్టర్లు",
+    beds: "బెడ్లు",
+    noHospitalsFound: "ఆసుపత్రులు కనుగొనబడలేదు",
+    tryDifferentDistrict: "వేరే జిల్లాను ఎంచుకోండి",
     
     // Doctor Login
     doctorLogin: "డాక్టర్ లాగిన్",
@@ -183,6 +238,12 @@ export const translations: Record<Language, Record<string, string>> = {
     totalDietPlans: "మొత్తం ఆహార ప్రణాళికలు",
     todayAppointments: "నేటి అపాయింట్‌మెంట్లు",
     pendingReports: "పెండింగ్ నివేదికలు",
+    noConditionSpecified: "పరిస్థితి పేర్కొనబడలేదు",
+    noPatientsYet: "ఇంకా రోగులు లేరు",
+    noAppointmentsToday: "నేడు అపాయింట్‌మెంట్లు లేవు",
+    noUpcomingAppointments: "రాబోయే అపాయింట్‌మెంట్లు లేవు",
+    noDietPlansYet: "ఇంకా ఆహార ప్రణాళికలు లేవు",
+    noReportsYet: "ఇంకా నివేదికలు లేవు",
     
     // Doctor Menu
     myPatients: "నా రోగులు",
@@ -239,6 +300,21 @@ export const translations: Record<Language, Record<string, string>> = {
     pending: "పెండింగ్",
     uploaded: "అప్‌లోడ్ చేయబడింది",
     reviewed: "సమీక్షించబడింది",
+    viewUploadReports: "మీ వైద్య నివేదికలను చూడండి మరియు అప్‌లోడ్ చేయండి",
+    viewManageReports: "రోగి నివేదికలను చూడండి మరియు నిర్వహించండి",
+    patientReportsAppear: "రోగి నివేదికలు ఇక్కడ కనిపిస్తాయి",
+    uploadFirstReport: "మీ మొదటి వైద్య నివేదికను అప్‌లోడ్ చేయండి",
+    reportTitle: "నివేదిక శీర్షిక",
+    reportDescription: "వివరణ",
+    reportTitlePlaceholder: "ఉదా., రక్త పరీక్ష నివేదిక",
+    reportDescPlaceholder: "నివేదిక యొక్క సంక్షిప్త వివరణ",
+    selectFile: "ఫైల్ ఎంచుకోండి",
+    clickToSelectFile: "ఫైల్ ఎంచుకోవడానికి క్లిక్ చేయండి",
+    fileTooLarge: "ఫైల్ చాలా పెద్దది. గరిష్ట పరిమాణం 5MB",
+    reportUploadedSuccess: "నివేదిక విజయవంతంగా అప్‌లోడ్ చేయబడింది",
+    uploadFailed: "అప్‌లోడ్ విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి.",
+    uploading: "అప్‌లోడ్ అవుతోంది...",
+    markReviewed: "సమీక్షించబడినదిగా మార్క్ చేయండి",
     
     // Settings
     personalInfo: "వ్యక్తిగత సమాచారం",
@@ -282,6 +358,8 @@ export const translations: Record<Language, Record<string, string>> = {
     error: "त्रुटि",
     required: "आवश्यक",
     optional: "वैकल्पिक",
+    patient: "मरीज",
+    condition: "स्थिति",
     
     // Home
     homeTitle: "प्राचीन ज्ञान, आधुनिक देखभाल",
@@ -290,7 +368,22 @@ export const translations: Record<Language, Record<string, string>> = {
     doctorCardDesc: "अपना डैशबोर्ड एक्सेस करें, मरीजों का प्रबंधन करें",
     patientCard: "मरीज पोर्टल",
     patientCardDesc: "अपने स्वास्थ्य रिकॉर्ड, आहार योजनाएं देखें",
+    hospitalsCard: "अस्पताल",
+    hospitalsCardDesc: "अपने पास आयुर्वेदिक अस्पताल और विशेषज्ञ खोजें",
+    viewHospitals: "अस्पताल देखें",
     selectHospital: "अस्पताल चुनें",
+    traditionalAyurvedicHealthcare: "पारंपरिक आयुर्वेदिक स्वास्थ्य सेवा",
+    
+    // Hospitals
+    hospitals: "अस्पताल",
+    filterByDistrict: "जिले के अनुसार फ़िल्टर करें",
+    allDistricts: "सभी जिले",
+    showingHospitals: "दिखा रहा है",
+    specialties: "विशेषताएं",
+    doctors: "डॉक्टर",
+    beds: "बिस्तर",
+    noHospitalsFound: "कोई अस्पताल नहीं मिला",
+    tryDifferentDistrict: "कोई अलग जिला चुनें",
     
     // Doctor Login
     doctorLogin: "डॉक्टर लॉगिन",
@@ -312,6 +405,12 @@ export const translations: Record<Language, Record<string, string>> = {
     totalDietPlans: "कुल आहार योजनाएं",
     todayAppointments: "आज की अपॉइंटमेंट",
     pendingReports: "लंबित रिपोर्ट",
+    noConditionSpecified: "कोई स्थिति निर्दिष्ट नहीं",
+    noPatientsYet: "अभी तक कोई मरीज नहीं",
+    noAppointmentsToday: "आज कोई अपॉइंटमेंट नहीं",
+    noUpcomingAppointments: "कोई आगामी अपॉइंटमेंट नहीं",
+    noDietPlansYet: "अभी तक कोई आहार योजना नहीं",
+    noReportsYet: "अभी तक कोई रिपोर्ट नहीं",
     
     // Doctor Menu
     myPatients: "मेरे मरीज",
@@ -368,6 +467,21 @@ export const translations: Record<Language, Record<string, string>> = {
     pending: "लंबित",
     uploaded: "अपलोड किया गया",
     reviewed: "समीक्षित",
+    viewUploadReports: "अपनी मेडिकल रिपोर्ट देखें और अपलोड करें",
+    viewManageReports: "मरीज की रिपोर्ट देखें और प्रबंधित करें",
+    patientReportsAppear: "मरीज की रिपोर्ट यहां दिखाई देंगी",
+    uploadFirstReport: "अपनी पहली मेडिकल रिपोर्ट अपलोड करें",
+    reportTitle: "रिपोर्ट शीर्षक",
+    reportDescription: "विवरण",
+    reportTitlePlaceholder: "उदा., रक्त परीक्षण रिपोर्ट",
+    reportDescPlaceholder: "रिपोर्ट का संक्षिप्त विवरण",
+    selectFile: "फ़ाइल चुनें",
+    clickToSelectFile: "फ़ाइल चुनने के लिए क्लिक करें",
+    fileTooLarge: "फ़ाइल बहुत बड़ी है। अधिकतम आकार 5MB है",
+    reportUploadedSuccess: "रिपोर्ट सफलतापूर्वक अपलोड की गई",
+    uploadFailed: "अपलोड विफल। कृपया पुनः प्रयास करें।",
+    uploading: "अपलोड हो रहा है...",
+    markReviewed: "समीक्षित के रूप में चिह्नित करें",
     
     // Settings
     personalInfo: "व्यक्तिगत जानकारी",

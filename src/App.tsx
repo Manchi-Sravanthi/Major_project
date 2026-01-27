@@ -8,6 +8,7 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import { DataProvider } from "@/contexts/DataContext";
 
 import Index from "./pages/Index";
+import Hospitals from "./pages/Hospitals";
 import NotFound from "./pages/NotFound";
 import DoctorDashboard from "./pages/doctor/Dashboard";
 import DoctorPatients from "./pages/doctor/Patients";
@@ -35,6 +36,7 @@ const App = () => (
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Index />} />
+                <Route path="/hospitals" element={<Hospitals />} />
                 <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
                 <Route path="/doctor/patients" element={<DoctorPatients />} />
                 <Route path="/doctor/diet-plans" element={<DoctorDietPlans />} />
