@@ -4,6 +4,7 @@ import { useAuth, Patient } from '@/contexts/AuthContext';
 import { useData } from '@/contexts/DataContext';
 import Sidebar from '@/components/Sidebar';
 import LanguageSelector from '@/components/LanguageSelector';
+import dashboardBg from '@/assets/dashboard-bg.jpg';
 import { Leaf, Utensils, Sparkles } from 'lucide-react';
 
 const PatientDietPlan: React.FC = () => {
@@ -15,8 +16,17 @@ const PatientDietPlan: React.FC = () => {
   const dietPlans = getDietPlansByPatient(patient?.id || '');
 
   return (
-    <div className="flex min-h-screen bg-background">
-      <Sidebar userType="patient" />
+    <div className="flex min-h-screen relative">
+      {/* Background */}
+      <div 
+        className="fixed inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${dashboardBg})` }}
+      >
+        <div className="absolute inset-0 bg-background/85" />
+      </div>
+
+      <div className="relative z-10 flex w-full">
+        <Sidebar userType="patient" />
       
       <main className="flex-1 p-8">
         {/* Header */}
@@ -116,9 +126,10 @@ const PatientDietPlan: React.FC = () => {
               <h3 className="text-xl font-semibold text-foreground mb-2">No diet plans yet</h3>
               <p className="text-muted-foreground">Your doctor will create a personalized diet plan for you</p>
             </div>
-          )}
-        </div>
-      </main>
+            )}
+          </div>
+        </main>
+      </div>
     </div>
   );
 };

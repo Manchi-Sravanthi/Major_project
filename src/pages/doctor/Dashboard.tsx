@@ -4,8 +4,9 @@ import { useAuth, Doctor } from '@/contexts/AuthContext';
 import { useData } from '@/contexts/DataContext';
 import Sidebar from '@/components/Sidebar';
 import LanguageSelector from '@/components/LanguageSelector';
+import NotificationsDropdown from '@/components/NotificationsDropdown';
 import dashboardBg from '@/assets/dashboard-bg.jpg';
-import { Users, Utensils, Calendar, FileText, Bell } from 'lucide-react';
+import { Users, Utensils, Calendar, FileText } from 'lucide-react';
 
 const DoctorDashboard: React.FC = () => {
   const { t } = useLanguage();
@@ -28,8 +29,7 @@ const DoctorDashboard: React.FC = () => {
     return new Date(a.date).toDateString() === today && a.status === 'scheduled';
   });
 
-  const pendingReports = reports.filter(r => r.status === 'pending');
-  const doctorNotifications = notifications.filter(n => n.userId === doctor?.id && !n.read);
+  const pendingReports = reports.filter(r => r.status === 'pending' || r.status === 'uploaded');
 
   const stats = [
     { 
@@ -87,14 +87,7 @@ const DoctorDashboard: React.FC = () => {
               </p>
             </div>
             <div className="flex items-center gap-4">
-              <button className="relative p-3 rounded-full bg-secondary hover:bg-secondary/80 transition-colors">
-                <Bell className="w-5 h-5 text-foreground" />
-                {doctorNotifications.length > 0 && (
-                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-destructive text-destructive-foreground text-xs rounded-full flex items-center justify-center">
-                    {doctorNotifications.length}
-                  </span>
-                )}
-              </button>
+              <NotificationsDropdown userId={doctor?.id || ''} />
               <LanguageSelector />
             </div>
           </div>
