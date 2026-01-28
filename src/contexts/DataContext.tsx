@@ -62,6 +62,7 @@ interface DataContextType {
   notifications: Notification[];
   addPatient: (patient: Patient) => void;
   updatePatient: (patient: Patient) => void;
+  deletePatient: (patientId: string) => void;
   addDietPlan: (plan: DietPlan) => void;
   updateDietPlan: (plan: DietPlan) => void;
   addAppointment: (appointment: Appointment) => void;
@@ -70,6 +71,7 @@ interface DataContextType {
   updateReport: (report: Report) => void;
   addNotification: (notification: Notification) => void;
   markNotificationRead: (id: string) => void;
+  markAllNotificationsRead: (userId: string) => void;
   getPatientsByDoctor: (doctorId: string) => Patient[];
   getDietPlansByPatient: (patientId: string) => DietPlan[];
   getAppointmentsByDoctor: (doctorId: string) => Appointment[];
@@ -134,6 +136,14 @@ export const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setPatients(prev => prev.map(p => p.id === patient.id ? patient : p));
   };
 
+  const deletePatient = (patientId: string) => {
+    setPatients(prev => prev.filter(p => p.id !== patientId));
+    // Also delete related data
+    setDietPlans(prev => prev.filter(d => d.patientId !== patientId));
+    setAppointments(prev => prev.filter(a => a.patientId !== patientId));
+    setReports(prev => prev.filter(r => r.patientId !== patientId));
+  };
+
   const addDietPlan = (plan: DietPlan) => {
     setDietPlans(prev => [...prev, plan]);
   };
@@ -164,6 +174,10 @@ export const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const markNotificationRead = (id: string) => {
     setNotifications(prev => prev.map(n => n.id === id ? { ...n, read: true } : n));
+  };
+
+  const markAllNotificationsRead = (userId: string) => {
+    setNotifications(prev => prev.map(n => n.userId === userId ? { ...n, read: true } : n));
   };
 
   const getPatientsByDoctor = (doctorId: string) => {
@@ -199,6 +213,7 @@ export const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       notifications,
       addPatient,
       updatePatient,
+      deletePatient,
       addDietPlan,
       updateDietPlan,
       addAppointment,
@@ -207,6 +222,7 @@ export const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       updateReport,
       addNotification,
       markNotificationRead,
+      markAllNotificationsRead,
       getPatientsByDoctor,
       getDietPlansByPatient,
       getAppointmentsByDoctor,

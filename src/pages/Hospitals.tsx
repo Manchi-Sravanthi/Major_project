@@ -4,12 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { hospitals } from '@/data/hospitalData';
 import LanguageSelector from '@/components/LanguageSelector';
 import heroBg from '@/assets/hero-bg.jpg';
-import { Building2, Phone, Mail, MapPin, Stethoscope, ArrowLeft, Filter } from 'lucide-react';
+import { Building2, Phone, Mail, MapPin, Stethoscope, ArrowLeft, Filter, Search } from 'lucide-react';
 
 const Hospitals: React.FC = () => {
   const { t } = useLanguage();
   const navigate = useNavigate();
   const [selectedDistrict, setSelectedDistrict] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   // Get unique districts
   const districts = useMemo(() => {
@@ -17,13 +18,26 @@ const Hospitals: React.FC = () => {
     return uniqueDistricts;
   }, []);
 
-  // Filter hospitals by district
+  // Filter hospitals by district and search query
   const filteredHospitals = useMemo(() => {
-    if (selectedDistrict === 'all') {
-      return hospitals;
+    let result = hospitals;
+    
+    if (selectedDistrict !== 'all') {
+      result = result.filter(h => h.district === selectedDistrict);
     }
-    return hospitals.filter(h => h.district === selectedDistrict);
-  }, [selectedDistrict]);
+    
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase().trim();
+      result = result.filter(h => 
+        h.name.toLowerCase().includes(query) ||
+        h.address.toLowerCase().includes(query) ||
+        h.district.toLowerCase().includes(query) ||
+        h.specialties.toLowerCase().includes(query)
+      );
+    }
+    
+    return result;
+  }, [selectedDistrict, searchQuery]);
 
   return (
     <div className="min-h-screen relative">
@@ -57,25 +71,40 @@ const Hospitals: React.FC = () => {
 
         {/* Main Content */}
         <main className="p-6 max-w-7xl mx-auto">
-          {/* Filter Section */}
-          <div className="mb-8 flex flex-wrap items-center gap-4">
-            <div className="flex items-center gap-2">
-              <Filter className="w-5 h-5 text-muted-foreground" />
-              <span className="font-medium text-foreground">{t('filterByDistrict')}:</span>
+          {/* Search and Filter Section */}
+          <div className="mb-8 space-y-4">
+            {/* Search Bar */}
+            <div className="relative max-w-md">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={t('searchHospitals')}
+                className="ayur-input pl-10 w-full"
+              />
             </div>
-            <select
-              value={selectedDistrict}
-              onChange={(e) => setSelectedDistrict(e.target.value)}
-              className="ayur-input max-w-xs"
-            >
-              <option value="all">{t('allDistricts')}</option>
-              {districts.map((district) => (
-                <option key={district} value={district}>{district}</option>
-              ))}
-            </select>
-            <span className="text-muted-foreground">
-              {t('showingHospitals')}: {filteredHospitals.length}
-            </span>
+            
+            {/* Filter */}
+            <div className="flex flex-wrap items-center gap-4">
+              <div className="flex items-center gap-2">
+                <Filter className="w-5 h-5 text-muted-foreground" />
+                <span className="font-medium text-foreground">{t('filterByDistrict')}:</span>
+              </div>
+              <select
+                value={selectedDistrict}
+                onChange={(e) => setSelectedDistrict(e.target.value)}
+                className="ayur-input max-w-xs"
+              >
+                <option value="all">{t('allDistricts')}</option>
+                {districts.map((district) => (
+                  <option key={district} value={district}>{district}</option>
+                ))}
+              </select>
+              <span className="text-muted-foreground">
+                {t('showingHospitals')}: {filteredHospitals.length}
+              </span>
+            </div>
           </div>
 
           {/* Hospitals Grid */}

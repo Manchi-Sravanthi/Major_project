@@ -154,12 +154,27 @@ export const translations: Record<Language, Record<string, string>> = {
     updateProfile: "Update Profile",
     language: "Language",
     notifications: "Notifications",
+    noNotifications: "No notifications",
+    markAllRead: "Mark all read",
     
     // Notifications
     newPatientRegistered: "New patient registered",
     dietPlanUpdated: "Diet plan has been updated",
     appointmentScheduled: "Appointment has been scheduled",
     reportUploaded: "Report has been uploaded",
+    
+    // Additional translations
+    searchHospitals: "Search hospitals by name, location, or specialty...",
+    viewDetails: "View Details",
+    confirmDeletePatient: "Are you sure you want to delete this patient? This will also remove their diet plans, appointments, and reports.",
+    patientDeleted: "Patient deleted successfully",
+    patientsRegistered: "patients registered",
+    noCondition: "No condition",
+    years: "years",
+    registered: "Registered",
+    notSpecified: "Not specified",
+    addFirstPatient: "Add your first patient to get started",
+    select: "Select",
     
     // Validation
     invalidCredentials: "Invalid credentials. Please check your details.",
@@ -321,12 +336,27 @@ export const translations: Record<Language, Record<string, string>> = {
     updateProfile: "ప్రొఫైల్ నవీకరించండి",
     language: "భాష",
     notifications: "నోటిఫికేషన్లు",
+    noNotifications: "నోటిఫికేషన్లు లేవు",
+    markAllRead: "అన్నింటిని చదివినట్లు మార్క్ చేయండి",
     
     // Notifications
     newPatientRegistered: "కొత్త రోగి నమోదు చేసుకున్నారు",
     dietPlanUpdated: "ఆహార ప్రణాళిక నవీకరించబడింది",
     appointmentScheduled: "అపాయింట్‌మెంట్ షెడ్యూల్ చేయబడింది",
     reportUploaded: "నివేదిక అప్‌లోడ్ చేయబడింది",
+    
+    // Additional translations
+    searchHospitals: "పేరు, ప్రదేశం లేదా ప్రత్యేకత ద్వారా ఆసుపత్రులను వెతకండి...",
+    viewDetails: "వివరాలు చూడండి",
+    confirmDeletePatient: "మీరు ఈ రోగిని తొలగించాలనుకుంటున్నారా? ఇది వారి ఆహార ప్రణాళికలు, అపాయింట్‌మెంట్లు మరియు నివేదికలను కూడా తొలగిస్తుంది.",
+    patientDeleted: "రోగి విజయవంతంగా తొలగించబడ్డారు",
+    patientsRegistered: "నమోదైన రోగులు",
+    noCondition: "పరిస్థితి లేదు",
+    years: "సంవత్సరాలు",
+    registered: "నమోదు",
+    notSpecified: "పేర్కొనబడలేదు",
+    addFirstPatient: "ప్రారంభించడానికి మీ మొదటి రోగిని జోడించండి",
+    select: "ఎంచుకోండి",
     
     // Validation
     invalidCredentials: "చెల్లని ఆధారాలు. మీ వివరాలను తనిఖీ చేయండి.",
@@ -488,12 +518,27 @@ export const translations: Record<Language, Record<string, string>> = {
     updateProfile: "प्रोफ़ाइल अपडेट करें",
     language: "भाषा",
     notifications: "सूचनाएं",
+    noNotifications: "कोई सूचना नहीं",
+    markAllRead: "सभी को पढ़ा हुआ चिह्नित करें",
     
     // Notifications
     newPatientRegistered: "नया मरीज पंजीकृत हुआ",
     dietPlanUpdated: "आहार योजना अपडेट की गई",
     appointmentScheduled: "अपॉइंटमेंट शेड्यूल की गई",
     reportUploaded: "रिपोर्ट अपलोड की गई",
+    
+    // Additional translations
+    searchHospitals: "नाम, स्थान या विशेषता से अस्पताल खोजें...",
+    viewDetails: "विवरण देखें",
+    confirmDeletePatient: "क्या आप वाकई इस मरीज को हटाना चाहते हैं? इससे उनकी आहार योजनाएं, अपॉइंटमेंट और रिपोर्ट भी हट जाएंगी।",
+    patientDeleted: "मरीज सफलतापूर्वक हटा दिया गया",
+    patientsRegistered: "पंजीकृत मरीज",
+    noCondition: "कोई स्थिति नहीं",
+    years: "वर्ष",
+    registered: "पंजीकृत",
+    notSpecified: "निर्दिष्ट नहीं",
+    addFirstPatient: "शुरू करने के लिए अपना पहला मरीज जोड़ें",
+    select: "चुनें",
     
     // Validation
     invalidCredentials: "अमान्य क्रेडेंशियल। कृपया अपनी जानकारी जांचें।",

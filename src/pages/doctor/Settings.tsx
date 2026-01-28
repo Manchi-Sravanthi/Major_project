@@ -3,6 +3,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { useAuth, Doctor } from '@/contexts/AuthContext';
 import Sidebar from '@/components/Sidebar';
 import LanguageSelector from '@/components/LanguageSelector';
+import dashboardBg from '@/assets/dashboard-bg.jpg';
 import { User, Mail, Phone, Building2, MapPin, Save } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -34,8 +35,17 @@ const DoctorSettings: React.FC = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-background">
-      <Sidebar userType="doctor" />
+    <div className="flex min-h-screen relative">
+      {/* Background */}
+      <div 
+        className="fixed inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${dashboardBg})` }}
+      >
+        <div className="absolute inset-0 bg-background/85" />
+      </div>
+
+      <div className="relative z-10 flex w-full">
+        <Sidebar userType="doctor" />
       
       <main className="flex-1 p-8">
         {/* Header */}
@@ -168,8 +178,9 @@ const DoctorSettings: React.FC = () => {
               </button>
             </form>
           </div>
-        </div>
-      </main>
+          </div>
+        </main>
+      </div>
     </div>
   );
 };
