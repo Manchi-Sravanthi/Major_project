@@ -4,8 +4,9 @@ import { useAuth, Patient } from '@/contexts/AuthContext';
 import { useData } from '@/contexts/DataContext';
 import Sidebar from '@/components/Sidebar';
 import LanguageSelector from '@/components/LanguageSelector';
+import NotificationsDropdown from '@/components/NotificationsDropdown';
 import dashboardBg from '@/assets/dashboard-bg.jpg';
-import { Heart, Utensils, Calendar, FileText, Bell } from 'lucide-react';
+import { Heart, Utensils, Calendar, FileText } from 'lucide-react';
 
 const PatientDashboard: React.FC = () => {
   const { t } = useLanguage();
@@ -71,14 +72,7 @@ const PatientDashboard: React.FC = () => {
               </p>
             </div>
             <div className="flex items-center gap-4">
-              <button className="relative p-3 rounded-full bg-secondary hover:bg-secondary/80 transition-colors">
-                <Bell className="w-5 h-5 text-foreground" />
-                {patientNotifications.length > 0 && (
-                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-destructive text-destructive-foreground text-xs rounded-full flex items-center justify-center">
-                    {patientNotifications.length}
-                  </span>
-                )}
-              </button>
+              <NotificationsDropdown userId={patient?.id || ''} />
               <LanguageSelector />
             </div>
           </div>
