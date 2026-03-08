@@ -18,6 +18,7 @@ const PatientLoginModal: React.FC<PatientLoginModalProps> = ({ isOpen, onClose }
   const { addPatient, patients, addNotification } = useData();
   const navigate = useNavigate();
   
+  const [mode, setMode] = useState<'login' | 'register'>('login');
   const [formData, setFormData] = useState({
     hospitalName: '',
     name: '',
@@ -31,59 +32,74 @@ const PatientLoginModal: React.FC<PatientLoginModalProps> = ({ isOpen, onClose }
     e.preventDefault();
     setIsLoading(true);
 
-    const hospital = getHospitalByName(formData.hospitalName);
-    
-    if (hospital) {
-      // Check if patient already exists
+    if (mode === 'login') {
+      // Login: match by name + email
       const existingPatient = patients.find(
-        p => p.email.toLowerCase() === formData.email.toLowerCase() && 
-             p.hospitalName === formData.hospitalName
+        p => p.name.toLowerCase() === formData.name.toLowerCase() &&
+             p.email.toLowerCase() === formData.email.toLowerCase()
       );
 
       if (existingPatient) {
-        // Login existing patient
         login(existingPatient, 'patient');
         toast.success(t('loginSuccess'));
         navigate('/patient/dashboard');
+        onClose();
       } else {
-        // Create new patient
-        const patientData: Patient = {
-          id: `pat_${Date.now()}`,
-          name: formData.name,
-          email: formData.email,
-          phone: '',
-          age: 0,
-          gender: '',
-          bloodGroup: '',
-          address: '',
-          disease: '',
-          symptoms: '',
-          medicalHistory: '',
-          hospitalName: hospital.name,
-          doctorId: `doc_${hospital.phone}`, // Link to hospital's doctor
-          registeredAt: new Date().toISOString(),
-        };
-        
-        addPatient(patientData);
-        login(patientData, 'patient');
-
-        // Add notification for doctor
-        addNotification({
-          id: `notif_${Date.now()}`,
-          userId: patientData.doctorId,
-          userType: 'doctor',
-          message: `${formData.name} ${t('newPatientRegistered')}`,
-          type: 'patient_registered',
-          read: false,
-          createdAt: new Date().toISOString(),
-        });
-
-        toast.success(t('loginSuccess'));
-        navigate('/patient/dashboard');
+        toast.error(t('patientNotFound'));
       }
-      onClose();
     } else {
-      toast.error(t('loginFailed'));
+      // Register: requires hospital
+      const hospital = getHospitalByName(formData.hospitalName);
+      
+      if (hospital) {
+        // Check if already registered
+        const existingPatient = patients.find(
+          p => p.email.toLowerCase() === formData.email.toLowerCase() && 
+               p.hospitalName === formData.hospitalName
+        );
+
+        if (existingPatient) {
+          login(existingPatient, 'patient');
+          toast.success(t('loginSuccess'));
+          navigate('/patient/dashboard');
+        } else {
+          const patientData: Patient = {
+            id: `pat_${Date.now()}`,
+            name: formData.name,
+            email: formData.email,
+            phone: '',
+            age: 0,
+            gender: '',
+            bloodGroup: '',
+            address: '',
+            disease: '',
+            symptoms: '',
+            medicalHistory: '',
+            hospitalName: hospital.name,
+            doctorId: `doc_${hospital.phone}`,
+            registeredAt: new Date().toISOString(),
+          };
+          
+          addPatient(patientData);
+          login(patientData, 'patient');
+
+          addNotification({
+            id: `notif_${Date.now()}`,
+            userId: patientData.doctorId,
+            userType: 'doctor',
+            message: `${formData.name} ${t('newPatientRegistered')}`,
+            type: 'patient_registered',
+            read: false,
+            createdAt: new Date().toISOString(),
+          });
+
+          toast.success(t('loginSuccess'));
+          navigate('/patient/dashboard');
+        }
+        onClose();
+      } else {
+        toast.error(t('loginFailed'));
+      }
     }
     
     setIsLoading(false);
