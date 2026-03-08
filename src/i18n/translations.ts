@@ -428,10 +428,12 @@ export const translations: Record<Language, Record<string, string>> = {
     loginSuccess: "लॉगिन सफल!",
     
     // Patient Login
-    patientLogin: "मरीज पंजीकरण",
+    patientLogin: "मरीज पोर्टल",
     patientName: "पूरा नाम",
     registerNow: "अभी पंजीकरण करें",
     alreadyRegistered: "पहले से पंजीकृत हैं? लॉगिन करें",
+    newPatientRegister: "नए मरीज? अभी पंजीकरण करें",
+    patientNotFound: "खाता नहीं मिला। कृपया अपना नाम और ईमेल जांचें या पंजीकरण करें।",
     
     // Dashboard
     dashboard: "डैशबोर्ड",
