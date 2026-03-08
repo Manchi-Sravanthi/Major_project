@@ -130,26 +130,52 @@ const PatientLoginModal: React.FC<PatientLoginModalProps> = ({ isOpen, onClose }
           </div>
         </div>
 
+        {/* Mode Toggle */}
+        <div className="px-6 pt-4">
+          <div className="flex rounded-lg bg-muted p-1">
+            <button
+              type="button"
+              onClick={() => setMode('login')}
+              className={`flex-1 py-2 px-3 rounded-md text-sm font-medium transition-colors ${
+                mode === 'login' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground'
+              }`}
+            >
+              {t('login')}
+            </button>
+            <button
+              type="button"
+              onClick={() => setMode('register')}
+              className={`flex-1 py-2 px-3 rounded-md text-sm font-medium transition-colors ${
+                mode === 'register' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground'
+              }`}
+            >
+              {t('registerNow')}
+            </button>
+          </div>
+        </div>
+
         {/* Form */}
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
-          {/* Hospital Selection */}
-          <div>
-            <label className="block text-sm font-medium mb-2 text-foreground">
-              <Building2 className="w-4 h-4 inline mr-2" />
-              {t('selectHospital')} *
-            </label>
-            <select
-              value={formData.hospitalName}
-              onChange={(e) => setFormData({ ...formData, hospitalName: e.target.value })}
-              className="ayur-input"
-              required
-            >
-              <option value="">{t('selectHospital')}</option>
-              {hospitals.map((hospital) => (
-                <option key={hospital} value={hospital}>{hospital}</option>
-              ))}
-            </select>
-          </div>
+          {/* Hospital Selection - only for register */}
+          {mode === 'register' && (
+            <div>
+              <label className="block text-sm font-medium mb-2 text-foreground">
+                <Building2 className="w-4 h-4 inline mr-2" />
+                {t('selectHospital')} *
+              </label>
+              <select
+                value={formData.hospitalName}
+                onChange={(e) => setFormData({ ...formData, hospitalName: e.target.value })}
+                className="ayur-input"
+                required
+              >
+                <option value="">{t('selectHospital')}</option>
+                {hospitals.map((hospital) => (
+                  <option key={hospital} value={hospital}>{hospital}</option>
+                ))}
+              </select>
+            </div>
+          )}
 
           {/* Patient Name */}
           <div>
@@ -188,11 +214,11 @@ const PatientLoginModal: React.FC<PatientLoginModalProps> = ({ isOpen, onClose }
             disabled={isLoading}
             className="w-full ayur-btn-primary disabled:opacity-50"
           >
-            {isLoading ? t('loading') : t('registerNow')}
+            {isLoading ? t('loading') : mode === 'login' ? t('login') : t('registerNow')}
           </button>
 
           <p className="text-xs text-muted-foreground text-center">
-            {t('alreadyRegistered')}
+            {mode === 'login' ? t('newPatientRegister') : t('alreadyRegistered')}
           </p>
         </form>
       </div>
