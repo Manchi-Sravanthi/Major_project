@@ -60,10 +60,12 @@ export const translations: Record<Language, Record<string, string>> = {
     loginSuccess: "Login successful!",
     
     // Patient Login
-    patientLogin: "Patient Registration",
+    patientLogin: "Patient Portal",
     patientName: "Full Name",
     registerNow: "Register Now",
     alreadyRegistered: "Already registered? Login",
+    newPatientRegister: "New patient? Register now",
+    patientNotFound: "No account found. Please check your name and email or register.",
     
     // Dashboard
     dashboard: "Dashboard",
