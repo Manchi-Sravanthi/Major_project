@@ -74,7 +74,7 @@ const Index: React.FC = () => {
               </div>
             </button>
 
-            <button onClick={() => navigate('/hospitals')} className="group relative bg-card/95 backdrop-blur-md rounded-2xl p-8 text-left transition-all duration-500 hover:scale-105 hover:shadow-2xl border border-border overflow-hidden">
+            <button onClick={() => navigate('/hospitals')} className="group relative bg-card/90 backdrop-blur-md rounded-2xl p-8 text-left transition-all duration-500 hover:scale-105 border border-border overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent/20 to-transparent rounded-bl-full" />
               <div className="relative z-10">
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-earth flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
