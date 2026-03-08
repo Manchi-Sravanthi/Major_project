@@ -244,10 +244,12 @@ export const translations: Record<Language, Record<string, string>> = {
     loginSuccess: "లాగిన్ విజయవంతమైంది!",
     
     // Patient Login
-    patientLogin: "రోగి నమోదు",
+    patientLogin: "రోగి పోర్టల్",
     patientName: "పూర్తి పేరు",
     registerNow: "ఇప్పుడే నమోదు చేసుకోండి",
     alreadyRegistered: "ఇప్పటికే నమోదు చేసుకున్నారా? లాగిన్",
+    newPatientRegister: "కొత్త రోగి? ఇప్పుడే నమోదు చేసుకోండి",
+    patientNotFound: "ఖాతా కనుగొనబడలేదు. మీ పేరు మరియు ఇమెయిల్ తనిఖీ చేయండి లేదా నమోదు చేసుకోండి.",
     
     // Dashboard
     dashboard: "డాష్‌బోర్డ్",
