@@ -19,7 +19,7 @@ const Index: React.FC = () => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroBg})` }}
       >
-        <div className="absolute inset-0 ayur-hero-overlay" />
+        <div className="absolute inset-0 bg-background/40" />
       </div>
 
       <div className="relative z-10 min-h-screen flex flex-col">
