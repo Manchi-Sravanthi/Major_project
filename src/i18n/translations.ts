@@ -60,12 +60,10 @@ export const translations: Record<Language, Record<string, string>> = {
     loginSuccess: "Login successful!",
     
     // Patient Login
-    patientLogin: "Patient Portal",
+    patientLogin: "Patient Registration",
     patientName: "Full Name",
     registerNow: "Register Now",
     alreadyRegistered: "Already registered? Login",
-    newPatientRegister: "New patient? Register now",
-    patientNotFound: "No account found. Please check your name and email or register.",
     
     // Dashboard
     dashboard: "Dashboard",
@@ -244,12 +242,10 @@ export const translations: Record<Language, Record<string, string>> = {
     loginSuccess: "లాగిన్ విజయవంతమైంది!",
     
     // Patient Login
-    patientLogin: "రోగి పోర్టల్",
+    patientLogin: "రోగి నమోదు",
     patientName: "పూర్తి పేరు",
     registerNow: "ఇప్పుడే నమోదు చేసుకోండి",
     alreadyRegistered: "ఇప్పటికే నమోదు చేసుకున్నారా? లాగిన్",
-    newPatientRegister: "కొత్త రోగి? ఇప్పుడే నమోదు చేసుకోండి",
-    patientNotFound: "ఖాతా కనుగొనబడలేదు. మీ పేరు మరియు ఇమెయిల్ తనిఖీ చేయండి లేదా నమోదు చేసుకోండి.",
     
     // Dashboard
     dashboard: "డాష్‌బోర్డ్",
@@ -428,12 +424,10 @@ export const translations: Record<Language, Record<string, string>> = {
     loginSuccess: "लॉगिन सफल!",
     
     // Patient Login
-    patientLogin: "मरीज पोर्टल",
+    patientLogin: "मरीज पंजीकरण",
     patientName: "पूरा नाम",
     registerNow: "अभी पंजीकरण करें",
     alreadyRegistered: "पहले से पंजीकृत हैं? लॉगिन करें",
-    newPatientRegister: "नए मरीज? अभी पंजीकरण करें",
-    patientNotFound: "खाता नहीं मिला। कृपया अपना नाम और ईमेल जांचें या पंजीकरण करें।",
     
     // Dashboard
     dashboard: "डैशबोर्ड",

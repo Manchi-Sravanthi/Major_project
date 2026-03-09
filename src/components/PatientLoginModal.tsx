@@ -18,7 +18,6 @@ const PatientLoginModal: React.FC<PatientLoginModalProps> = ({ isOpen, onClose }
   const { addPatient, patients, addNotification } = useData();
   const navigate = useNavigate();
   
-  const [mode, setMode] = useState<'login' | 'register'>('login');
   const [formData, setFormData] = useState({
     hospitalName: '',
     name: '',
@@ -32,74 +31,59 @@ const PatientLoginModal: React.FC<PatientLoginModalProps> = ({ isOpen, onClose }
     e.preventDefault();
     setIsLoading(true);
 
-    if (mode === 'login') {
-      // Login: match by name + email
+    const hospital = getHospitalByName(formData.hospitalName);
+    
+    if (hospital) {
+      // Check if patient already exists
       const existingPatient = patients.find(
-        p => p.name.toLowerCase() === formData.name.toLowerCase() &&
-             p.email.toLowerCase() === formData.email.toLowerCase()
+        p => p.email.toLowerCase() === formData.email.toLowerCase() && 
+             p.hospitalName === formData.hospitalName
       );
 
       if (existingPatient) {
+        // Login existing patient
         login(existingPatient, 'patient');
         toast.success(t('loginSuccess'));
         navigate('/patient/dashboard');
-        onClose();
       } else {
-        toast.error(t('patientNotFound'));
+        // Create new patient
+        const patientData: Patient = {
+          id: `pat_${Date.now()}`,
+          name: formData.name,
+          email: formData.email,
+          phone: '',
+          age: 0,
+          gender: '',
+          bloodGroup: '',
+          address: '',
+          disease: '',
+          symptoms: '',
+          medicalHistory: '',
+          hospitalName: hospital.name,
+          doctorId: `doc_${hospital.phone}`, // Link to hospital's doctor
+          registeredAt: new Date().toISOString(),
+        };
+        
+        addPatient(patientData);
+        login(patientData, 'patient');
+
+        // Add notification for doctor
+        addNotification({
+          id: `notif_${Date.now()}`,
+          userId: patientData.doctorId,
+          userType: 'doctor',
+          message: `${formData.name} ${t('newPatientRegistered')}`,
+          type: 'patient_registered',
+          read: false,
+          createdAt: new Date().toISOString(),
+        });
+
+        toast.success(t('loginSuccess'));
+        navigate('/patient/dashboard');
       }
+      onClose();
     } else {
-      // Register: requires hospital
-      const hospital = getHospitalByName(formData.hospitalName);
-      
-      if (hospital) {
-        // Check if already registered
-        const existingPatient = patients.find(
-          p => p.email.toLowerCase() === formData.email.toLowerCase() && 
-               p.hospitalName === formData.hospitalName
-        );
-
-        if (existingPatient) {
-          login(existingPatient, 'patient');
-          toast.success(t('loginSuccess'));
-          navigate('/patient/dashboard');
-        } else {
-          const patientData: Patient = {
-            id: `pat_${Date.now()}`,
-            name: formData.name,
-            email: formData.email,
-            phone: '',
-            age: 0,
-            gender: '',
-            bloodGroup: '',
-            address: '',
-            disease: '',
-            symptoms: '',
-            medicalHistory: '',
-            hospitalName: hospital.name,
-            doctorId: `doc_${hospital.phone}`,
-            registeredAt: new Date().toISOString(),
-          };
-          
-          addPatient(patientData);
-          login(patientData, 'patient');
-
-          addNotification({
-            id: `notif_${Date.now()}`,
-            userId: patientData.doctorId,
-            userType: 'doctor',
-            message: `${formData.name} ${t('newPatientRegistered')}`,
-            type: 'patient_registered',
-            read: false,
-            createdAt: new Date().toISOString(),
-          });
-
-          toast.success(t('loginSuccess'));
-          navigate('/patient/dashboard');
-        }
-        onClose();
-      } else {
-        toast.error(t('loginFailed'));
-      }
+      toast.error(t('loginFailed'));
     }
     
     setIsLoading(false);
@@ -130,52 +114,26 @@ const PatientLoginModal: React.FC<PatientLoginModalProps> = ({ isOpen, onClose }
           </div>
         </div>
 
-        {/* Mode Toggle */}
-        <div className="px-6 pt-4">
-          <div className="flex rounded-lg bg-muted p-1">
-            <button
-              type="button"
-              onClick={() => setMode('login')}
-              className={`flex-1 py-2 px-3 rounded-md text-sm font-medium transition-colors ${
-                mode === 'login' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground'
-              }`}
-            >
-              {t('login')}
-            </button>
-            <button
-              type="button"
-              onClick={() => setMode('register')}
-              className={`flex-1 py-2 px-3 rounded-md text-sm font-medium transition-colors ${
-                mode === 'register' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground'
-              }`}
-            >
-              {t('registerNow')}
-            </button>
-          </div>
-        </div>
-
         {/* Form */}
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
-          {/* Hospital Selection - only for register */}
-          {mode === 'register' && (
-            <div>
-              <label className="block text-sm font-medium mb-2 text-foreground">
-                <Building2 className="w-4 h-4 inline mr-2" />
-                {t('selectHospital')} *
-              </label>
-              <select
-                value={formData.hospitalName}
-                onChange={(e) => setFormData({ ...formData, hospitalName: e.target.value })}
-                className="ayur-input"
-                required
-              >
-                <option value="">{t('selectHospital')}</option>
-                {hospitals.map((hospital) => (
-                  <option key={hospital} value={hospital}>{hospital}</option>
-                ))}
-              </select>
-            </div>
-          )}
+          {/* Hospital Selection */}
+          <div>
+            <label className="block text-sm font-medium mb-2 text-foreground">
+              <Building2 className="w-4 h-4 inline mr-2" />
+              {t('selectHospital')} *
+            </label>
+            <select
+              value={formData.hospitalName}
+              onChange={(e) => setFormData({ ...formData, hospitalName: e.target.value })}
+              className="ayur-input"
+              required
+            >
+              <option value="">{t('selectHospital')}</option>
+              {hospitals.map((hospital) => (
+                <option key={hospital} value={hospital}>{hospital}</option>
+              ))}
+            </select>
+          </div>
 
           {/* Patient Name */}
           <div>
@@ -214,11 +172,11 @@ const PatientLoginModal: React.FC<PatientLoginModalProps> = ({ isOpen, onClose }
             disabled={isLoading}
             className="w-full ayur-btn-primary disabled:opacity-50"
           >
-            {isLoading ? t('loading') : mode === 'login' ? t('login') : t('registerNow')}
+            {isLoading ? t('loading') : t('registerNow')}
           </button>
 
           <p className="text-xs text-muted-foreground text-center">
-            {mode === 'login' ? t('newPatientRegister') : t('alreadyRegistered')}
+            {t('alreadyRegistered')}
           </p>
         </form>
       </div>
