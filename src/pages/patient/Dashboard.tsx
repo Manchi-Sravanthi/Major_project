@@ -54,7 +54,7 @@ const PatientDashboard: React.FC = () => {
         className="fixed inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${dashboardBg})` }}
       >
-        <div className="absolute inset-0 bg-background/85" />
+        <div className="absolute inset-0 bg-background/40" />
       </div>
 
       <div className="relative z-10 flex w-full">

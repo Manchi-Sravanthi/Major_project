@@ -46,7 +46,7 @@ const Hospitals: React.FC = () => {
         className="fixed inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroBg})` }}
       >
-        <div className="absolute inset-0 bg-background/90" />
+        <div className="absolute inset-0 bg-background/40" />
       </div>
 
       <div className="relative z-10 min-h-screen">
